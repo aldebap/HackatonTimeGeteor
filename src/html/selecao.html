@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+<!-- Page header -->
+
+<head>
+    <title>Perfil Profissional - Painel de Gestão</title>
+
+    <link rel="stylesheet" href="painelgestao.css">
+    </link>
+
+    <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+</head>
+
+<!-- Page body -->
+
+<body>
+    <div class="box">
+        <a class="button" href="#popup">Mostrar</a>
+    </div>
+
+    <div id="popup" class="overlay">
+        <div class="popup">
+            <h2>Sele&ccedil;&atilde;o de Compet&ecirc;ncias</h2>
+            <a class="close" href="#">&times;</a>
+
+            <section class="container">
+                <table>
+                    <tr>
+                        <td width="45%">
+                            <select id="competencias-disponiveis" size="3">
+                                <option value="promocao">Promo&ccedil;&atilde;o</option>
+                                <option value="job-rotation">Job Rotation</option>
+                                <option value="gestao">Gest&atilde;o</option>
+                            </select>
+                        </td>
+                        <td width="10%">
+                            <a class="botao-selecao" onclick="javascript:selecionarCompetencia(); return false;">&gt;</a>
+                        </td>
+                        <td width="45%">
+                            <select id="competencias-selecionadas" size="3" multiple="multiple">
+                            </select>
+                        </td>
+                    </tr>
+            </section>
+        </div>
+    </div>
+
+    <!-- initialization script -->
+    <script type="text/javascript">
+        function selecionarCompetencia() {
+            var competencia = $("#competencias-disponiveis :selected").text();
+            $("#elementId").val();
+
+            var novaOpcao = document.createElement("option");
+            novaOpcao.text = competencia;
+            $("#competencias-selecionadas").append(novaOpcao);
+        }
+
+        popupOpenClose($(".popup"));
+
+        function popupOpenClose(popup) {
+
+            $(popup).show();
+
+            /* Close popup if user clicks on background */
+            $(popup).click(function (e) {
+                if (e.target == this) {
+                    if ($(popup).is(':visible')) {
+                        $(popup).hide();
+                    }
+                }
+            });
+
+            /* Close popup and remove errors if user clicks on cancel or close buttons */
+            $(popup).find("button[name=close]").on("click", function () {
+                if ($(".formElementError").is(':visible')) {
+                    $(".formElementError").remove();
+                }
+                $(popup).hide();
+            });
+        }
+
+    </script>
+</body>
+
+</html>

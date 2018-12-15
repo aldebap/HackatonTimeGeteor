@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+<!-- Page header -->
+
+<head>
+    <title>Perfil Profissional - Painel de Gestão</title>
+
+    <link rel="stylesheet" href="painelgestao.css">
+    </link>
+
+    <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+</head>
+
+<!-- Page body -->
+
+<body>
+    <div class="box">
+        <a class="button" href="#popup">Mostrar</a>
+    </div>
+
+    <div id="popup" class="overlay">
+        <div class="popup">
+            <h2>Avalia&ccedil;&atilde;o de Compet&ecirc;ncias</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+            </div>
+        </div>
+    </div>
+
+    <!-- initialization script -->
+    <script type="text/javascript">
+        popupOpenClose($(".popup"));
+
+        function popupOpenClose(popup) {
+
+            $(popup).show();
+
+            /* Close popup if user clicks on background */
+            $(popup).click(function (e) {
+                if (e.target == this) {
+                    if ($(popup).is(':visible')) {
+                        $(popup).hide();
+                    }
+                }
+            });
+
+            /* Close popup and remove errors if user clicks on cancel or close buttons */
+            $(popup).find("button[name=close]").on("click", function () {
+                if ($(".formElementError").is(':visible')) {
+                    $(".formElementError").remove();
+                }
+                $(popup).hide();
+            });
+        }
+
+    </script>
+</body>
+
+</html>
